@@ -1,16 +1,27 @@
+# type Queryで利用可能なクエリを定義
 type Query {
+    # 本のリストを取得
+    # 文字列型の引数categoryを受け取り、Bookのリスト型を返す
+    # 引数categoryは任意
     books(category: String): [Book]
+    # 1件の本を取得
+    # 本ID(必須)を受け取り、Book型で返す
     book(id: Int!): Book
 },
+# type Mutationでデータの操作を定義
 type Mutation {
+    # 本を追加する
+    # 以下引数リスト（!は必須の意）
     addBook(
-        title: String!
-        author: String!
-        turn: Int
-        category: String!
-    ): Book
+        title: String! # タイトル
+        author: String! # 著者
+        turn: Int # 巻数
+        category: String! # カテゴリ
+    ): Book # 追加したデータをBook型で返す
 },
+# type <TypeName>で型を定義
 type Book {
+    # 以下フィールドリスト
     id: Int
     title: String
     author: String
